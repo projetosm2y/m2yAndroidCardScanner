@@ -19,6 +19,9 @@ interface CardScannerContract {
         fun setCameraViewOnClickListener(onClick: ()->Unit)
         fun setContinueBtnOnClickListener(onClick: ()->Unit)
         fun finishActivity(cardModel: CardModel)
+        fun setInputTextsTextColor(color: Int)
+        fun setBtnBackgroundColor(color: Int)
+        fun setBtnTextColor(color: Int)
     }
     interface Presenter : BasePresenter<View>{
         fun onActivityCreated(cardScannerConfig: CardScannerConfig?)

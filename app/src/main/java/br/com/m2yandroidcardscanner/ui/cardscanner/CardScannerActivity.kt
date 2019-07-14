@@ -6,7 +6,9 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.PorterDuff
 import android.os.Bundle
+import androidx.core.content.ContextCompat
 import br.com.m2yandroidcardscanner.R
 import br.com.m2yandroidcardscanner.extensions.setVisible
 import br.com.m2yandroidcardscanner.models.CardModel
@@ -16,6 +18,7 @@ import br.com.m2yandroidcardscanner.utils.FirebaseMLManager
 import com.otaliastudios.cameraview.CameraListener
 import com.otaliastudios.cameraview.PictureResult
 import kotlinx.android.synthetic.main.activity_card_scanner.*
+import org.jetbrains.anko.backgroundDrawable
 import org.jetbrains.anko.longToast
 
 /**
@@ -117,6 +120,24 @@ class CardScannerActivity : BaseActivity(), CardScannerContract.View{
         intent.putExtra(Constants.EXTRA_CARD_MODEL, cardModel)
         setResult(Activity.RESULT_OK, intent)
         finish()
+    }
+
+    override fun setBtnBackgroundColor(color: Int) {
+        val drawable = ContextCompat.getDrawable(this, R.drawable.bg_rounded_corners_accent)
+        drawable?.setColorFilter(ContextCompat.getColor(this, color), PorterDuff.Mode.SRC_ATOP)
+
+        cardScannerContinueBtn.backgroundDrawable = drawable
+    }
+
+    override fun setBtnTextColor(color: Int) {
+        cardScannerContinueBtn.setTextColor(color)
+    }
+
+    override fun setInputTextsTextColor(color: Int) {
+        cardScannerCardNumberEt.textColor = color
+        cardScannerExpiresDateEt.textColor = color
+        cardScannerIssueDateEt.textColor = color
+        cardScannerSecurityCodeEt.textColor = color
     }
 
 }

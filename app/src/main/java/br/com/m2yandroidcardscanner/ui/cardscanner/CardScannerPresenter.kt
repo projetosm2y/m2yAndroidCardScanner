@@ -21,7 +21,10 @@ class CardScannerPresenter : CardScannerContract.Presenter{
 
     override fun onActivityCreated(cardScannerConfig: CardScannerConfig?) {
         setConfig(cardScannerConfig)
+
         view?.hideCardContainer()
+
+        setupLayout()
 
         Handler().postDelayed({
             performImageCapture()
@@ -84,6 +87,12 @@ class CardScannerPresenter : CardScannerContract.Presenter{
     private fun performImageCapture(){
         view?.displayLoading(true)
         view?.captureImage()
+    }
+
+    private fun setupLayout(){
+        view?.setBtnTextColor(config.layout.btnTextColor)
+        view?.setBtnBackgroundColor(config.layout.btnBackgroundColor)
+        view?.setInputTextsTextColor(config.layout.inputTextsTextColor)
     }
 
     override fun setConfig(cardScannerConfig: CardScannerConfig?) {

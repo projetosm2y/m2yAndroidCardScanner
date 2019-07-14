@@ -15,6 +15,7 @@ import br.com.m2yandroidcardscanner.utils.insertMask
 import br.com.m2yandroidcardscanner.utils.validations.IsCnpj
 import br.com.m2yandroidcardscanner.utils.validations.IsCpf
 import br.com.m2yandroidcardscanner.utils.validations.IsEmail
+import org.jetbrains.anko.textColor
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.regex.Pattern
@@ -64,6 +65,12 @@ class AppTextInputLayout : TextInputLayout {
         get() = mEditText.text.toString()
         set(text) {
             mEditText.setText(text)
+        }
+
+    var textColor: Int = -1
+        set(value) {
+            field = value
+            mEditText.setTextColor(value)
         }
 
     val unmaskedText: String
