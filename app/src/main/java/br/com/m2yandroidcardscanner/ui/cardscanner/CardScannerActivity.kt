@@ -18,6 +18,10 @@ import com.otaliastudios.cameraview.PictureResult
 import kotlinx.android.synthetic.main.activity_card_scanner.*
 import org.jetbrains.anko.longToast
 
+/**
+ * Base class for AppCompat themed {@link android.app.Dialog}s.
+ */
+
 class CardScannerActivity : BaseActivity(), CardScannerContract.View{
     private val presenter: CardScannerContract.Presenter by lazy {
         val p = CardScannerPresenter()
