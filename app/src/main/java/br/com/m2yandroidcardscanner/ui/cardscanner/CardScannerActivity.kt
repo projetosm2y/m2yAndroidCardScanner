@@ -132,7 +132,7 @@ class CardScannerActivity : BaseActivity(), CardScannerContract.View{
 }
 
 
-fun Context.createCardScannerIntent(config: CardScannerConfig = CardScannerConfig()) =
+fun Context.createCardScannerIntent(config: CardScannerConfig? = CardScannerConfig()) =
     intentFor<CardScannerActivity>(
         Constants.EXTRA_CARD_SCANNER_CONFIG to config
     )
