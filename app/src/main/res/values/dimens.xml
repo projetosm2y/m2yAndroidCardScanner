@@ -1,0 +1,21 @@
+<resources>
+    <dimen name="horizontal_margin">16dp</dimen>
+    <dimen name="horizontal_margin_detail">4dp</dimen>
+    <dimen name="horizontal_margin_small">8dp</dimen>
+    <dimen name="horizontal_margin_large">32dp</dimen>
+    <dimen name="vertical_margin">16dp</dimen>
+    <dimen name="vertical_margin_detail">4dp</dimen>
+    <dimen name="vertical_margin_small">8dp</dimen>
+    <dimen name="vertical_margin_large">32dp</dimen>
+
+    <!--TEXT SIZES-->
+    <dimen name="text_display">34sp</dimen>
+    <dimen name="text_headline">24sp</dimen>
+    <dimen name="text_title">20sp</dimen>
+    <dimen name="text_subheading">16sp</dimen>
+    <dimen name="text_body">14sp</dimen>
+    <dimen name="text_caption">12sp</dimen>
+
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="roundness_partial">10dp</dimen>
+</resources>

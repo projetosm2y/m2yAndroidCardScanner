@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"
+    android:elevation="4dp">
+
+    <TextView
+        android:id="@+id/progressButtonTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingBottom="@dimen/vertical_margin"
+        android:paddingTop="@dimen/vertical_margin"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/text_body"
+        tools:text="Button"/>
+
+    <ProgressBar
+        android:id="@+id/progressButtonProgressBar"
+        style="?android:attr/progressBarStyleSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/progressButtonTextView"
+        android:layout_alignTop="@id/progressButtonTextView"
+        android:layout_centerInParent="true"
+        android:elevation="4dp"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/colorPrimary"
+        android:padding="16dp"
+        android:visibility="invisible"/>
+
+    <ImageView
+        android:id="@+id/progressButtonImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="@dimen/vertical_margin"
+        android:layout_marginTop="@dimen/vertical_margin"
+        />
+
+</RelativeLayout>

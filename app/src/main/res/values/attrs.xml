@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="AppTextInputLayout">
+        <attr name="validation" format="boolean"/>
+        <attr name="emptinessIsValid" format="boolean"/>
+        <attr name="emptyErrorText" format="string"/>
+        <attr name="filterCharacterSet" format="string"/>
+        <attr name="regexErrorText" format="string"/>
+        <attr name="invalidErrorText" format="string"/>
+        <attr name="pattern" format="string"/>
+        <attr name="inputTextType" format="enum">
+            <enum name="custom" value="0"/>
+            <enum name="name" value="1"/>
+            <enum name="mail" value="2"/>
+            <enum name="date" value="3"/>
+            <enum name="phone" value="4"/>
+            <enum name="cep" value="5"/>
+            <enum name="creditCard" value="6"/>
+            <enum name="password" value="7"/>
+            <enum name="matching" value="8"/>
+            <enum name="cpf" value="9"/>
+            <enum name="cnpj" value="10"/>
+            <enum name="cpfOrCnpj" value="11"/>
+            <enum name="creditCardDate" value="12" />
+            <enum name="number" value="13" />
+        </attr>
+        <attr name="minLength" format="integer"/>
+        <attr name="customMask" format="string"/>
+        <attr name="errorBackground" format="reference"/>
+        <attr name="defaultBackground" format="reference"/>
+        <attr name="verifyCpfWithSavedOne" format="boolean"/>
+    </declare-styleable>
+
+    <!--PROGRESS BUTTON-->
+    <declare-styleable name="ProgressButton">
+        <attr name="btnBackground" format="reference"/>
+        <attr name="btnText" format="reference"/>
+        <attr name="btnCustomSelectableItemBackground" format="reference"/>
+        <attr name="btnTextSize" format="dimension"/>
+        <attr name="btnTextColor" format="color"/>
+        <attr name="btnProgressColor" format="color"/>
+        <attr name="btnAllCaps" format="boolean"/>
+        <attr name="btnEnabled" format="boolean"/>
+        <attr name="btnIcon" format="reference"/>
+        <attr name="btnBackgroundColor" format="color"/>
+        <attr name="btnDisabledBackgroundColor" format="color"/>
+    </declare-styleable>
+
+    <!--COMPAT VIEWS WITH VECTOR DRAWABLES-->
+    <declare-styleable name="CompatDrawableEditText">
+        <attr name="drawableLeftCompat"/>
+        <attr name="drawableRightCompat"/>
+        <attr name="drawableTopCompat"/>
+        <attr name="drawableBottomCompat"/>
+    </declare-styleable>
+
+    <declare-styleable name="CompatDrawableTextView">
+        <attr name="drawableLeftCompat"/>
+        <attr name="drawableRightCompat"/>
+        <attr name="drawableTopCompat"/>
+        <attr name="drawableBottomCompat"/>
+    </declare-styleable>
+    <attr name="drawableLeftCompat" format="reference"/>
+    <attr name="drawableRightCompat" format="reference"/>
+    <attr name="drawableTopCompat" format="reference"/>
+    <attr name="drawableBottomCompat" format="reference"/>
+
+</resources>

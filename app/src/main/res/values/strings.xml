@@ -1,3 +1,11 @@
 <resources>
+
+    <!--AppTextInputLayout DEFAULT FEEDBACKS-->
+    <string name="apptextinputlayout_invalid_field">Campo %s inválido.</string>
+    <string name="apptextinputlayout_empty_field">Campo %s não pode estar vazio.</string>
+    <string name="apptextinputlayout_regex_field">%s não atende aos critérios exigidos.</string>
+    <string name="apptextinputlaoyut_password_field">A %1$s não pode conter menos de %2$d caracteres.</string>
+
     <string name="card_scanner_app_name">M2YAndroid Card Scanner</string>
+    <string name="title_activity_card_scanner">CardScanner</string>
 </resources>

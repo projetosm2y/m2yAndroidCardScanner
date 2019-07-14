@@ -8,7 +8,7 @@ import com.google.firebase.ml.vision.common.FirebaseVisionImage
 import com.google.firebase.ml.vision.text.FirebaseVisionText
 import com.google.firebase.ml.vision.text.FirebaseVisionTextRecognizer
 
-object FirabaseMLManager {
+object FirebaseMLManager {
     var fbVisionImage: FirebaseVisionImage? = null
     var fbVisionTextRecognizer: FirebaseVisionTextRecognizer = FirebaseVision.getInstance().onDeviceTextRecognizer
 
@@ -16,17 +16,17 @@ object FirabaseMLManager {
         FirebaseApp.initializeApp(context)
     }
 
-    fun imageSource(bitmap: Bitmap) : FirabaseMLManager {
+    fun imageSource(bitmap: Bitmap) : FirebaseMLManager {
         fbVisionImage = FirebaseVisionImage.fromBitmap(bitmap)
         return this
     }
 
-    fun withOnDeviceTextRecognizer(): FirabaseMLManager {
+    fun withOnDeviceTextRecognizer(): FirebaseMLManager {
         fbVisionTextRecognizer = FirebaseVision.getInstance().onDeviceTextRecognizer
         return this
     }
 
-    fun withCloudTextRecognizer(): FirabaseMLManager {
+    fun withCloudTextRecognizer(): FirebaseMLManager {
         fbVisionTextRecognizer = FirebaseVision.getInstance().cloudTextRecognizer
         return this
     }
