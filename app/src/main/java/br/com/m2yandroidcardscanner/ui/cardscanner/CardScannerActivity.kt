@@ -134,10 +134,10 @@ class CardScannerActivity : BaseActivity(), CardScannerContract.View{
     }
 
     override fun setInputTextsTextColor(color: Int) {
-        cardScannerCardNumberEt.textColor = color
-        cardScannerExpiresDateEt.textColor = color
-        cardScannerIssueDateEt.textColor = color
-        cardScannerSecurityCodeEt.textColor = color
+        cardScannerCardNumberEt.textColor = ContextCompat.getColor(this, color)
+        cardScannerExpiresDateEt.textColor = ContextCompat.getColor(this, color)
+        cardScannerIssueDateEt.textColor = ContextCompat.getColor(this, color)
+        cardScannerSecurityCodeEt.textColor = ContextCompat.getColor(this, color)
     }
 
 }
