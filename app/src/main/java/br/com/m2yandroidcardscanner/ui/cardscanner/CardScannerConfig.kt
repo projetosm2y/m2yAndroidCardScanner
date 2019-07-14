@@ -1,6 +1,8 @@
 package br.com.m2yandroidcardscanner.ui.cardscanner
 
-open class CardScannerConfig {
+import java.io.Serializable
+
+open class CardScannerConfig : Serializable {
     open var capturedImageWidth = 3000
     open var capturedImageHeight = 3000
     open var recognizerType = FirebaseRecognizerType.ON_DEVICE_RECOGNIZER
