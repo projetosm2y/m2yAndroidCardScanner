@@ -12,7 +12,7 @@ open class CardScannerConfig : Serializable {
     open var test: TestConfig? = null
 }
 
-open class TestConfig {
+open class TestConfig : Serializable {
     open var showImageTaken = false
     open var showRecognizedText = true
 }
