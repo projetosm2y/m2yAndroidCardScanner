@@ -136,6 +136,3 @@ fun Context.createCardScannerIntent(config: CardScannerConfig = CardScannerConfi
     intent.putExtra(Constants.EXTRA_CARD_SCANNER_CONFIG, config)
     return intent
 }
-//    intentFor<CardScannerActivity>(
-//        Constants.EXTRA_CARD_SCANNER_CONFIG to config
-//    )
