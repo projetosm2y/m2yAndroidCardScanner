@@ -9,13 +9,13 @@ open class CardScannerConfig : Serializable {
     open var showResultOnScreen = false
     open var captureImageDelay = 8000L
     open var allowClickCapture = false
-    open var test: TestConfig? = null
+    open var test: TestConfig = TestConfig()
 }
 
-open class TestConfig : Serializable {
-    open var showImageTaken = false
-    open var showRecognizedText = true
-}
+open class TestConfig(
+    var showImageTaken: Boolean = false,
+    var showRecognizedText: Boolean = false
+) : Serializable
 
 enum class FirebaseRecognizerType(val value: String){
     ON_DEVICE_RECOGNIZER("device"),
