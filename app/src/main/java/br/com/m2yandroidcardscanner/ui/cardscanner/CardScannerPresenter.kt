@@ -82,4 +82,8 @@ class CardScannerPresenter : CardScannerContract.Presenter{
         view?.displayLoading(true)
         view?.captureImage()
     }
+
+    override fun setConfig(cardScannerConfig: CardScannerConfig) {
+        config = cardScannerConfig
+    }
 }

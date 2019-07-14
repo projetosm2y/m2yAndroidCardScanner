@@ -22,6 +22,7 @@ interface CardScannerContract {
     }
     interface Presenter : BasePresenter<View>{
         fun onActivityResumed()
+        fun setConfig(cardScannerConfig: CardScannerConfig)
         fun onCardScannerResult(scan: String)
         fun onCameraViewResult(result: PictureResult)
 

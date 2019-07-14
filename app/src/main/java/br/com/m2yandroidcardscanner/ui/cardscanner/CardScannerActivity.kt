@@ -4,6 +4,7 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import br.com.m2yandroidcardscanner.R
@@ -30,6 +31,7 @@ class CardScannerActivity : BaseActivity(), CardScannerContract.View{
         setContentView(R.layout.activity_card_scanner)
         FirebaseMLManager.initialize(this@CardScannerActivity)
         presenter.onActivityResumed()
+        presenter.setConfig(intent?.extras?.getSerializable(Constants.EXTRA_CARD_SCANNER_CONFIG) as CardScannerConfig)
         camera.setLifecycleOwner(this)
         setListeners()
         hideCardContainer()
@@ -132,7 +134,11 @@ class CardScannerActivity : BaseActivity(), CardScannerContract.View{
 }
 
 
-fun Context.createCardScannerIntent(config: CardScannerConfig = CardScannerConfig()) =
-    intentFor<CardScannerActivity>(
-        Constants.EXTRA_CARD_SCANNER_CONFIG to config
-    )
+fun Context.createCardScannerIntent(config: CardScannerConfig = CardScannerConfig()): Intent{
+    val intent = Intent( this, CardScannerActivity::class.java)
+    intent.putExtra(Constants.EXTRA_CARD_SCANNER_CONFIG, config)
+    return intent
+}
+//    intentFor<CardScannerActivity>(
+//        Constants.EXTRA_CARD_SCANNER_CONFIG to config
+//    )
