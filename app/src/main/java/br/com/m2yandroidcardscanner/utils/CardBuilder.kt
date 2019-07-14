@@ -27,10 +27,10 @@ object CardBuilder {
     fun generateCardNumber(text: String = textSource): String {
         cardNumber = Constants.CARD_NUMBER_REGEX.toRegex()
             .find(
-                text.replace(" ", "")
+                text.replace(Constants.SPACES_CHARACTERS.toRegex(), "")
             )?.value ?: ""
 
-        if(cardNumber.isBlank()) {
+        if(cardNumber.isBlank() || cardNumber.length < 16) {
             cardNumber = Constants.CARD_NUMBER_REGEX.toRegex()
                 .find(
                     text.replace(Constants.EMPTY_CHARACTERS.toRegex(), "")

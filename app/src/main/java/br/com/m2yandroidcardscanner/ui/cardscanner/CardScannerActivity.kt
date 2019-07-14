@@ -102,9 +102,7 @@ class CardScannerActivity : BaseActivity(), CardScannerContract.View{
     }
 
     override fun setCameraViewOnClickListener(onClick: () -> Unit) {
-        camera.isClickable = true
-        camera.isFocusable = true
-        camera.setOnClickListener {
+        activityClickableAreaView.setOnClickListener {
             onClick()
         }
     }
