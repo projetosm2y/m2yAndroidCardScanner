@@ -18,4 +18,6 @@
 
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="roundness_partial">10dp</dimen>
+
+    <dimen name="image_test_size">400dp</dimen>
 </resources>
