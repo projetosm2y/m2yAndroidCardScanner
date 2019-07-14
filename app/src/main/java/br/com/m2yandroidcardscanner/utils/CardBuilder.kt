@@ -95,6 +95,8 @@ object CardBuilder {
     }
 
     fun build(): CardModel {
+        clearFields()
+
         generateCardNumber(textSource)
         generateExpiresDate(textSource)
         generateIssuesDate(textSource)
@@ -119,5 +121,12 @@ object CardBuilder {
         }
 
         return cardModel
+    }
+
+    fun clearFields() {
+        cardNumber = ""
+        expiresDate = ""
+        issueDate = ""
+        securityCode = ""
     }
 }
