@@ -67,9 +67,9 @@ open class TestConfig(
 
 open class LayoutConfig(
     var inputTextsTextColor: Int = R.color.colorPrimary,
-    var btnBackgroundColor: Int = R.color.color_white,
-    var btnTextColor: Int = R.color.colorAccent
-) : Serializable
+    var btnTextColor: Int = R.color.color_white,
+    var btnBackgroundColor: Int = R.color.colorAccent
+    ) : Serializable
 
 enum class FirebaseRecognizerType(val value: String){
     ON_DEVICE_RECOGNIZER("device"),
