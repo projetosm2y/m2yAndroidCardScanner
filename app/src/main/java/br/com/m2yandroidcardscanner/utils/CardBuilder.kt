@@ -26,7 +26,9 @@ object CardBuilder {
 
     fun generateCardNumber(text: String = textSource): String {
         cardNumber = Constants.CARD_NUMBER_REGEX.toRegex()
-            .find(text.replace(Regex(Constants.NON_DIGIT), ""))?.value
+            .find(
+                text.replace(Constants.EMPTY_CHARACTERS.toRegex(), "")
+            )?.value
             ?: ""
         return cardNumber
     }
