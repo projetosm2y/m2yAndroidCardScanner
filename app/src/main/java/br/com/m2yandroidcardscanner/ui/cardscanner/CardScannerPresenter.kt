@@ -130,9 +130,18 @@ class CardScannerPresenter : CardScannerContract.Presenter{
     }
 
     private fun setupLayout(){
-        view?.setBtnTextColor(config.layout.btnTextColor)
-        view?.setBtnBackgroundColor(config.layout.btnBackgroundColor)
-        view?.setInputTextsTextColor(config.layout.inputTextsTextColor)
+        if(config.layout.btnTextColor != -1){
+            view?.setBtnTextColor(config.layout.btnTextColor)
+        }
+
+        if(config.layout.btnBackgroundColor != -1){
+            view?.setBtnBackgroundColor(config.layout.btnBackgroundColor)
+        }
+
+        if(config.layout.inputTextsTextColor != -1){
+            view?.setInputTextsTextColor(config.layout.inputTextsTextColor)
+        }
+
     }
 
     override fun setConfig(cardScannerConfig: CardScannerConfig?) {
