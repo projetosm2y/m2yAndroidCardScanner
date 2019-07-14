@@ -64,4 +64,7 @@ dependencies {
     implementation "org.jetbrains.anko:anko:$ankoVersion"
     implementation "androidx.core:core-ktx:$ktxVersion"
 
+    //FIREBASE
+    implementation 'com.google.firebase:firebase-core:17.0.0'
+    implementation 'com.google.firebase:firebase-ml-vision:21.0.0'
 }
