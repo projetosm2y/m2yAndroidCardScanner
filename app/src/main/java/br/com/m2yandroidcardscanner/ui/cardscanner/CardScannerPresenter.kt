@@ -19,7 +19,10 @@ class CardScannerPresenter : CardScannerContract.Presenter{
         view = null
     }
 
-    override fun onActivityResumed() {
+    override fun onActivityCreated(cardScannerConfig: CardScannerConfig?) {
+        setConfig(cardScannerConfig)
+        view?.hideCardContainer()
+
         Handler().postDelayed({
             performImageCapture()
         }, config.captureImageDelay)
@@ -83,7 +86,9 @@ class CardScannerPresenter : CardScannerContract.Presenter{
         view?.captureImage()
     }
 
-    override fun setConfig(cardScannerConfig: CardScannerConfig) {
-        config = cardScannerConfig
+    override fun setConfig(cardScannerConfig: CardScannerConfig?) {
+        cardScannerConfig?.let {
+            config = it
+        }
     }
 }

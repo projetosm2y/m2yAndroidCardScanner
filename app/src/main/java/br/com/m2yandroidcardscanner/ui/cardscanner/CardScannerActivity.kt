@@ -16,7 +16,6 @@ import br.com.m2yandroidcardscanner.utils.FirebaseMLManager
 import com.otaliastudios.cameraview.CameraListener
 import com.otaliastudios.cameraview.PictureResult
 import kotlinx.android.synthetic.main.activity_card_scanner.*
-import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.longToast
 
 class CardScannerActivity : BaseActivity(), CardScannerContract.View{
@@ -30,11 +29,9 @@ class CardScannerActivity : BaseActivity(), CardScannerContract.View{
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_card_scanner)
         FirebaseMLManager.initialize(this@CardScannerActivity)
-        presenter.onActivityResumed()
-        presenter.setConfig(intent?.extras?.getSerializable(Constants.EXTRA_CARD_SCANNER_CONFIG) as CardScannerConfig)
+        presenter.onActivityCreated(intent?.extras?.getSerializable(Constants.EXTRA_CARD_SCANNER_CONFIG) as CardScannerConfig)
         camera.setLifecycleOwner(this)
         setListeners()
-        hideCardContainer()
     }
 
     private fun setListeners() {
