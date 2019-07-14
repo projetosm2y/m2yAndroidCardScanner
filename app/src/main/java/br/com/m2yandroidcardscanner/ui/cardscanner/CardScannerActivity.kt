@@ -50,21 +50,10 @@ class CardScannerActivity : BaseActivity(), CardScannerContract.View{
     override fun displayCard(card: CardModel) {
         showCardContainer()
 
-        if(card.cardNumber?.isNotBlank() == true){
-            cardScannerCardNumberEt.text = card.cardNumber!!
-        }
-
-        if(card.expiresDate?.isNotBlank() == true){
-            cardScannerExpiresDateEt.text = card.expiresDate!!
-        }
-
-        if(card.issueDate?.isNotBlank() == true){
-            cardScannerIssueDateEt.text = card.issueDate!!
-        }
-
-        if(card.securityCode?.isNotBlank() == true){
-            cardScannerSecurityCodeEt.text = card.securityCode!!
-        }
+        cardScannerCardNumberEt.text = card.cardNumber ?: ""
+        cardScannerExpiresDateEt.text = card.expiresDate ?: ""
+        cardScannerIssueDateEt.text = card.issueDate ?: ""
+        cardScannerSecurityCodeEt.text = card.securityCode ?: ""
     }
 
     override fun displayLoading(show: Boolean) {

@@ -77,8 +77,20 @@ object CardBuilder {
     }
 
     fun generateSecurityCode(text: String): String {
-        securityCode = Constants.SECURITY_CODE.toRegex().find(text)?.value
-                        ?: ""
+        var words = text.split(" ")
+        words.forEach {
+            securityCode = Constants.SECURITY_CODE.toRegex().find(it)?.value
+                ?: ""
+        }
+
+        if(securityCode.isBlank()) {
+            words = text.split("\n")
+            words.forEach {
+                securityCode = Constants.SECURITY_CODE.toRegex().find(it)?.value
+                    ?: ""
+            }
+        }
+
         return securityCode
     }
 
