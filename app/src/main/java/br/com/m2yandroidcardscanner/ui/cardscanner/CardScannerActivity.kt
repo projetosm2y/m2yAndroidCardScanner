@@ -2,6 +2,7 @@ package br.com.m2yandroidcardscanner.ui.cardscanner
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
+import android.app.Activity
 import android.content.Context
 import android.graphics.Bitmap
 import android.os.Bundle
@@ -9,6 +10,7 @@ import br.com.m2yandroidcardscanner.R
 import br.com.m2yandroidcardscanner.extensions.setVisible
 import br.com.m2yandroidcardscanner.models.CardModel
 import br.com.m2yandroidcardscanner.ui.base.BaseActivity
+import br.com.m2yandroidcardscanner.utils.Constants
 import br.com.m2yandroidcardscanner.utils.FirebaseMLManager
 import com.otaliastudios.cameraview.CameraListener
 import com.otaliastudios.cameraview.PictureResult
@@ -27,16 +29,18 @@ class CardScannerActivity : BaseActivity(), CardScannerContract.View{
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_card_scanner)
         FirebaseMLManager.initialize(this@CardScannerActivity)
-//        FirebaseApp.initializeApp(this@CardScannerActivity)
         presenter.onActivityResumed()
         camera.setLifecycleOwner(this)
+        setListeners()
+        hideCardContainer()
+    }
 
-        cardScannerCardInformationContainerLl
-            .animate()
-            .translationY(cardScannerCardInformationContainerLl.height.toFloat())
-            .setDuration(500)
-            .alpha(0.0f)
-            .setListener(object : AnimatorListenerAdapter() {})
+    private fun setListeners() {
+        camera.addCameraListener(object: CameraListener() {
+            override fun onPictureTaken(result: PictureResult) {
+                presenter.onCameraViewResult(result)
+            }
+        })
     }
 
     override fun onDestroy() {
@@ -45,6 +49,52 @@ class CardScannerActivity : BaseActivity(), CardScannerContract.View{
     }
 
     override fun displayCard(card: CardModel) {
+        showCardContainer()
+
+        if(card.cardNumber?.isNotBlank() == true){
+            cardScannerCardNumberEt.text = card.cardNumber!!
+        }
+
+        if(card.expiresDate?.isNotBlank() == true){
+            cardScannerExpiresDateEt.text = card.expiresDate!!
+        }
+
+        if(card.issueDate?.isNotBlank() == true){
+            cardScannerIssueDateEt.text = card.issueDate!!
+        }
+
+        if(card.securityCode?.isNotBlank() == true){
+            cardScannerSecurityCodeEt.text = card.securityCode!!
+        }
+    }
+
+    override fun displayLoading(show: Boolean) {
+        cardScannerProgressBarContainerLl.setVisible(show)
+    }
+
+    override fun captureImage() {
+        camera.takePicture()
+    }
+
+
+    override fun displayTestImage(bp: Bitmap) {
+        testImageView.setImageBitmap(bp)
+    }
+
+    override fun displayToast(text: String) {
+        longToast(text)
+    }
+
+    override fun hideCardContainer() {
+        cardScannerCardInformationContainerLl
+            .animate()
+            .translationY(cardScannerCardInformationContainerLl.height.toFloat())
+            .setDuration(500)
+            .alpha(0.0f)
+            .setListener(object : AnimatorListenerAdapter() {})
+    }
+
+    override fun showCardContainer() {
         cardScannerCardInformationContainerLl.setVisible(true)
         cardScannerCardInformationContainerLl
             .animate()
@@ -57,45 +107,32 @@ class CardScannerActivity : BaseActivity(), CardScannerContract.View{
                     cardScannerCardInformationContainerLl.setVisible(true)
                 }
             })
-        cardScannerCardNumberEt.text = card.cardNumber ?: ""
-        cardScannerExpiresDateEt.text = card.expiresDate ?:  ""
-        cardScannerIssueDateEt.text = card.issueDate ?: ""
-        cardScannerSecurityCodeEt.text = card.securityCode ?: ""
     }
 
-    override fun displayLoading(show: Boolean) {
-        cardScannerProgressBarContainerLl.setVisible(show)
+    override fun setCameraViewOnClickListener(onClick: () -> Unit) {
+        camera.isClickable = true
+        camera.isFocusable = true
+        camera.setOnClickListener {
+            onClick()
+        }
     }
 
-    override fun captureImage() {
-        camera.addCameraListener(object: CameraListener() {
-            override fun onPictureTaken(result: PictureResult) {
-                result.toBitmap(2000, 2000){bp ->
-                    runOnUiThread {
-                        bp?.let {
-                            testImageView.setImageBitmap(it)
-                            getCardDetails(it)
-                        }
-                    }
-                }
-            }
-        })
-        camera.takePicture()
-        displayLoading(true)
+    override fun setContinueBtnOnClickListener(onClick: ()->Unit) {
+        cardScannerContinueBtn.setOnClickListener {
+            onClick()
+        }
     }
 
-    private fun getCardDetails(image: Bitmap) {
-        FirebaseMLManager
-            .imageSource(image)
-            .withOnDeviceTextRecognizer()
-            .processImage {
-                longToast(it.text)
-                presenter.onCardScannerResult(it.text)
-            }
-//        }
+    override fun finishActivity(cardModel: CardModel) {
+        intent.putExtra(Constants.EXTRA_CARD_MODEL, cardModel)
+        setResult(Activity.RESULT_OK)
+        finish()
     }
+
 }
 
 
-fun Context.createCardScannerIntent() =
-    intentFor<CardScannerActivity>()
+fun Context.createCardScannerIntent(config: CardScannerConfig = CardScannerConfig()) =
+    intentFor<CardScannerActivity>(
+        Constants.EXTRA_CARD_SCANNER_CONFIG to config
+    )

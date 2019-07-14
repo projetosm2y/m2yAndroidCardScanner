@@ -8,4 +8,9 @@
 
     <string name="card_scanner_app_name">M2YAndroid Card Scanner</string>
     <string name="title_activity_card_scanner">CardScanner</string>
+
+    <string name="card_number_label">Número do Cartão</string>
+    <string name="card_expires_date_label">Data de expiração</string>
+    <string name="card_issue_date_label">Data de Emissão</string>
+    <string name="card_security_code_label">CVV</string>
 </resources>

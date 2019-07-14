@@ -7,4 +7,8 @@ object Constants {
     const val EMPTY_CHARACTERS = "( +)|(\n)"
     const val NON_DIGIT = "\\D"
     const val SECURITY_CODE = "^[0-9]{3}$"
+
+    /* Extras */
+    const val EXTRA_CARD_SCANNER_CONFIG = "EXTRA_CARD_SCANNER_CONFIG"
+    const val EXTRA_CARD_MODEL = "EXTRA_CARD_MODEL"
 }
