@@ -124,7 +124,7 @@ class CardScannerActivity : BaseActivity(), CardScannerContract.View{
 
     override fun finishActivity(cardModel: CardModel) {
         intent.putExtra(Constants.EXTRA_CARD_MODEL, cardModel)
-        setResult(Activity.RESULT_OK)
+        setResult(Activity.RESULT_OK, intent)
         finish()
     }
 
